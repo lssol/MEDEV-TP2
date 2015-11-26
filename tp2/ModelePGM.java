@@ -25,6 +25,14 @@ public class ModelePGM {
      * Désigne la matrice qui represente le fichier : chaque ligne represente une ligne réèlle de l'image
      */
     private int[][] matrice;
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
     
     /**
      * Le constructeur de la classe réalise l'importation du fichier source
