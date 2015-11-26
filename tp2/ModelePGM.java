@@ -81,24 +81,21 @@ public class ModelePGM {
         ligne = fichier.readLine();
         matrice = new int[width][height];
 
-        // Compteur de mots, reviens à 0 quand on atteint width
-        int compteur = 0;
+
         int i = 0; // ligne dans la matrice
         int j = 0; // colonne dans la matrice
 
-        while (ligne != null) {
+        while (ligne != null && i < height) {
             StringTokenizer tok = new StringTokenizer(ligne, "\t");
 
             while (tok.hasMoreTokens()) {
                 // Lorsqu'on a finis une ligne
-                if (compteur == width-1) {
-                    compteur = 0;
+                if (j == width) {
                     i++;
                     j=0;
                 }
                 matrice[i][j] = Integer.parseInt(tok.nextToken());
                 j++;
-                compteur++;
             }
             // on passe à la ligne suivante du fichier
             ligne = fichier.readLine();
