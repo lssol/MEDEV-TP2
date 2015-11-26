@@ -87,13 +87,14 @@ public class ModelePGM {
         int j = 0; // colonne dans la matrice
 
         while (ligne != null) {
-            StringTokenizer tok = new StringTokenizer(ligne, delimiteur);
+            StringTokenizer tok = new StringTokenizer(ligne, "\t");
 
             while (tok.hasMoreTokens()) {
                 // Lorsqu'on a finis une ligne
-                if (compteur == width) {
+                if (compteur == width-1) {
                     compteur = 0;
                     i++;
+                    j=0;
                 }
                 matrice[i][j] = Integer.parseInt(tok.nextToken());
                 j++;
