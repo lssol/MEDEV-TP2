@@ -34,11 +34,35 @@ public class Histo {
             
         }
     
-    public ModelePGM genereModelPGM(){
+    /**
+     * générère l'objet ModelePGM correspondant à l'histogramme courant
+     * 
+     * @return image PGM représentant l'histogramme
+     */
+    public ModelePGM genereModelePGM(){     
+        //hauteur de l'image PGM de l'histogramme
+        int max = 0;
+        for (int i = 0; i < valeurs.length; i++) {
+            if (valeurs[i] > max) {
+                max = valeurs[i];
+            }          
+        }
         
+        // création de la matrice des valeurs
+        int matrice[][] = new int[valeurs.length][max];
         
+        for (int i = max-1 ; i>=0 ; i--){
+            for (int j = 0; j < valeurs.length; j++) {
+                if (valeurs[j] > 0){
+                    matrice[i][j] = 255;
+                    valeurs[j] --;
+                }       
+            }
+        }
         
-        return ModelPGM;
+        ModelePGM res = new ModelePGM(matrice);
+        
+        return res;
     }
     
     
