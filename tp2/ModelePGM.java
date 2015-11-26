@@ -112,4 +112,13 @@ public class ModelePGM {
     public void ecrire(String nomFichier){
 
     }
+    public void test_lireMatrice(){
+        int i;
+        int j;
+        for (i = 0; i < width; i++) {
+            for(j=0; j < height ; j++)
+                System.out.print(matrice[i][j] + " ");
+            System.out.println("\n");
+        }
+    }
 }
