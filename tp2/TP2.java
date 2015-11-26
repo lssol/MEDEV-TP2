@@ -20,8 +20,11 @@ public class TP2 {
      */
     public static void main(String[] args) {
         try {
+            // fichier lena.pgm à la racine
             ModelePGM lena = new ModelePGM("lena.pgm");
-            lena.test_lireMatrice();
+            //lena.test_lireMatrice();
+            lena.genererHisto("Histo-Lena");
+            
         } catch (IOException ex) {
             Logger.getLogger(TP2.class.getName()).log(Level.SEVERE, null, ex);
         }
