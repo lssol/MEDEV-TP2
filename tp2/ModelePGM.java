@@ -42,8 +42,16 @@ public class ModelePGM {
     public int[][] getMatrice() {
         return matrice;
     }
-    
-
+    /**
+     * Ce constructeur permet la construction de modèle PGM par d'autres classes
+     * @param mat La matrice du fichier PGM
+     */
+    public ModelePGM(int[][] mat){
+        width = mat[0].length;
+        height = mat.length;
+        
+        matrice = mat;       
+    }
     /**
      * Le constructeur de la classe réalise l'importation du fichier source
      * A savoir : une fois les lignes du début ecrite, les sauts de ligne ne sont plus d'aucune importance
