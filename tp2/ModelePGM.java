@@ -86,7 +86,7 @@ public class ModelePGM {
         height = Integer.parseInt(tokenizer.nextToken());
         ligne = fichier.readLine();
         ligne = fichier.readLine();
-        matrice = new int[width][height];
+        matrice = new int[height][width];
 
         int i = 0; // ligne dans la matrice
         int j = 0; // colonne dans la matrice
