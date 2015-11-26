@@ -19,14 +19,15 @@ public class Histo {
      * @param m modele de données associée à l'image source
      */
     public Histo(ModelePGM m) {
+        // vnb de pixels pours les valeurs entre 0 et 255
         valeurs = new int[256];
         
-        int l = m.getlenght();
-        int w = m.getwdth();
+        int h = m.getHeight();
+        int w = m.getWidth();
         
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
-                int k = m[i][j];
+                int k = m.getMatrice()[i][j];
                     valeurs[k] ++;
                 }
             }
