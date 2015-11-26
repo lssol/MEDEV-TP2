@@ -125,16 +125,15 @@ public class ModelePGM {
 
             int i;
             int j;
-            for (i = 0; i < width; i++) {
-                for (j = 0; j < height; j++) {
+            for (i = 0; i < height; i++) {
+                for (j = 0; j < width; j++) {
                     pw.print(matrice[i][j] + " ");
                 }
                 pw.print("\n");
             }
-
             pw.close();
         } catch (IOException exception) {
-            System.out.println("Erreur lors de la lecture : " + exception.getMessage());
+            System.out.println("Erreur lors de l'ecrituree : " + exception.getMessage());
         }
     }
     /**
@@ -144,14 +143,14 @@ public class ModelePGM {
     public void genererHisto(String nom){
         Histo histo = new Histo(this);
         ModelePGM histoPGM = histo.genereModelePGM();
-        histoPGM.ecrire(nom + ".pgm");
+        histoPGM.ecrire(nom);
     }
 
     public void test_lireMatrice() {
         int i;
         int j;
-        for (i = 0; i < width; i++) {
-            for (j = 0; j < height; j++) {
+        for (i = 0; i < height; i++) {
+            for (j = 0; j < width; j++) {
                 System.out.print(matrice[i][j] + " ");
             }
             System.out.println("\n");
