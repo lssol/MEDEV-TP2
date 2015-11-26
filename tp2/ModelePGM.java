@@ -6,9 +6,13 @@
 package tp2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +34,6 @@ public class ModelePGM {
      */
     private int[][] matrice;
 
-
     public int getWidth() {
         return width;
     }
@@ -42,19 +45,23 @@ public class ModelePGM {
     public int[][] getMatrice() {
         return matrice;
     }
+
     /**
      * Ce constructeur permet la construction de modèle PGM par d'autres classes
+     *
      * @param mat La matrice du fichier PGM
      */
-    public ModelePGM(int[][] mat){
+    public ModelePGM(int[][] mat) {
         width = mat[0].length;
         height = mat.length;
-        
-        matrice = mat;       
+
+        matrice = mat;
     }
+
     /**
-     * Le constructeur de la classe réalise l'importation du fichier source
-     * A savoir : une fois les lignes du début ecrite, les sauts de ligne ne sont plus d'aucune importance
+     * Le constructeur de la classe réalise l'importation du fichier source A
+     * savoir : une fois les lignes du début ecrite, les sauts de ligne ne sont
+     * plus d'aucune importance
      *
      * @param source est le lien vers le fichier à importer
      */
@@ -81,7 +88,6 @@ public class ModelePGM {
         ligne = fichier.readLine();
         matrice = new int[width][height];
 
-
         int i = 0; // ligne dans la matrice
         int j = 0; // colonne dans la matrice
 
@@ -92,7 +98,7 @@ public class ModelePGM {
                 // Lorsqu'on a finis une ligne
                 if (j == width) {
                     i++;
-                    j=0;
+                    j = 0;
                 }
                 matrice[i][j] = Integer.parseInt(tok.nextToken());
                 j++;
@@ -105,17 +111,40 @@ public class ModelePGM {
 
     /**
      * Crée un fichier sous format PGM
-     * @param nomFichier Le nom du fichier
+     *
+     * @param nomFichier Le nom du fichier (sans l'extension
      */
-    public void ecrire(String nomFichier){
+    public void ecrire(String nomFichier) {
+        File f = new File(nomFichier + ".pgm");
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+            pw.println("P2");
+            pw.println("#");
+            pw.println(width + " " + height);
+            pw.println("255");
 
+            int i;
+            int j;
+            for (i = 0; i < width; i++) {
+                for (j = 0; j < height; j++) {
+                    pw.print(matrice[i][j] + " ");
+                }
+                pw.print("\n");
+            }
+
+            pw.close();
+        } catch (IOException exception) {
+            System.out.println("Erreur lors de la lecture : " + exception.getMessage());
+        }
     }
-    public void test_lireMatrice(){
+
+    public void test_lireMatrice() {
         int i;
         int j;
         for (i = 0; i < width; i++) {
-            for(j=0; j < height ; j++)
+            for (j = 0; j < height; j++) {
                 System.out.print(matrice[i][j] + " ");
+            }
             System.out.println("\n");
         }
     }
