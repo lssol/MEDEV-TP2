@@ -137,6 +137,15 @@ public class ModelePGM {
             System.out.println("Erreur lors de la lecture : " + exception.getMessage());
         }
     }
+    /**
+     * Utilise la classe Histo pour générer l'histogramme de la photo courante
+     * @param nom Nom du fichier générer sans l'extension
+     */
+    public void genererHisto(String nom){
+        Histo histo = new Histo(this);
+        ModelePGM histoPGM = histo.genereModelePGM();
+        histoPGM.ecrire(nom + ".pgm");
+    }
 
     public void test_lireMatrice() {
         int i;
