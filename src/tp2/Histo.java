@@ -15,7 +15,11 @@ public class Histo {
      * Vecteur contenant le nombre de pixels pour chaque teinte (entre 0 et 255)		
      */		
     private int valeurs[];		
-		
+
+    public Histo(int[] valeurs) {
+        this.valeurs = valeurs;
+    }
+    
     /**		
      * Construit un objet Histo en fonction d'une matrice représentant une image		
      * en PGM		
